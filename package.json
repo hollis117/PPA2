@@ -1,0 +1,29 @@
+{
+  "name": "ppa2",
+  "version": "1.0.0",
+  "description": "software testing and continuous integration assignment 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hollis117/PPA2.git"
+  },
+  "author": "Chris Kalaf",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hollis117/PPA2/issues"
+  },
+  "homepage": "https://github.com/hollis117/PPA2#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "core-js": "^3.3.4",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "jquery": "^3.4.1",
+    "mysql": "^2.17.1",
+    "react": "^16.11.0",
+    "request": "^2.88.0"
+  }
+}
