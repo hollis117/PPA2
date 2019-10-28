@@ -18,6 +18,11 @@ function bmi(feet, inches, weight) {
   } else {
     size = "Obese";
   }
-  return "\nYour BMI is " + bmi + " and that means you are " + size + ".";
+  var output = "\nYour BMI is " + bmi + " and that means you are " + size + ".";
+  var qData = {feet: feet, inches: inches, weight: weight, output: output, timeIn: Now()};
+  connection.query('INSERT INTO bmi SET ?',qData,(err,res) => {
+    if(err) throw err;
+  });
+  return output;
 }
 module.exports = bmi;
