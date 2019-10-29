@@ -1,4 +1,4 @@
-var sql = require('./sql');
+var sql = require('./sql.js');
 function bmi(feet, inches, weight) {
   if ((isNaN(feet) || isNaN(inches) || isNaN(weight)) || feet <= 0 || weight <= 0) {
     return "Oops. It seems like your input is invalid.";
@@ -18,11 +18,13 @@ function bmi(feet, inches, weight) {
   } else {
     size = "Obese";
   }
-  var output = "\nYour BMI is " + bmi + " and that means you are " + size + ".";
-  var qData = {feet: feet, inches: inches, weight: weight, output: output, timeIn: Now()};
+  var output = "Your BMI is " + bmi + " and that means you are " + size + ".";
+  var qData = {feet: feet, inches: inches, weight: weight, output: output, timeIn: new Date().toISOString().slice(0, 19).replace('T', ' ')};
+  var connection = sql.connect();
   connection.query('INSERT INTO bmi SET ?',qData,(err,res) => {
     if(err) throw err;
   });
-  return output;
+  sql.disconnect(connection);
+  return "\n"+output;
 }
 module.exports = bmi;
