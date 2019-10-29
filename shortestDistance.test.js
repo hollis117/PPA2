@@ -5,7 +5,7 @@ const sinon = require('sinon');
 const invalid = "Oops. It seems like your input is invalid."
 
 describe('shortestDistance returns the correct values when given input', () => {
-  it('Checks for correct return type', () => {
+  it('checks for correct return type', () => {
     expect(typeof(shortestDistance(2,1,1,5))).toMatch('string');
   });
   it('calculates shortest distance between easy points', () => {
@@ -25,17 +25,17 @@ describe('shortestDistance returns the correct values when given input', () => {
   });
 });
 
-var stub = sinnon.stub();
+var stub = sinon.stub();
 stub.withArgs(2,1,1,5).returns('The shortest distance between (2,1) and (1,5) is (4.12).');
 stub.withArgs('a',1,1,1).returns(invalid);
 stub.withArgs(1,'b',1,1).returns(invalid);
-stub.withArgs(1,1,'c',1).returns(inavlid);
+stub.withArgs(1,1,'c',1).returns(invalid);
 stub.withArgs(1,1,1,'d').returns(invalid);
 stub.withArgs(1.5,2,3,4).returns('The shortest distance between (1.5,2) and (3,4) is (2.5).');
-wtub.withArgs(-2,1,1,5).returns('The shortest distance between (-2,1) and (1,5) is (5).');
+stub.withArgs(-2,1,1,5).returns('The shortest distance between (-2,1) and (1,5) is (5).');
 
 describe('Testing new DB functionality (with stubs)', () => {
-  it('Checks for correct return type (stub)', () => {
+  it('checks for correct return type (stub)', () => {
     expect(typeof(stub(2,1,1,5))).toMatch('string');
   });
   it('calculates shortest distance between easy points (stub)', () => {
