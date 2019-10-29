@@ -16,19 +16,19 @@ var serv = http.createServer(function (req, res) {
   if (req.url == '/bmi') {
     connection.query('SELECT * FROM bmi', function (err, result) {
       if (err) throw err;
-      res.writeHead(200, {'Content-Type': 'text/JSON'});
+      res.writeHead(200, {'Content-Type': 'application/JSON'});
       res.write(JSON.stringify(result));
       res.end();
     });
   } else if (req.url == '/shortestDistance') {
     connection.query('SELECT * FROM shortestDistance', function (err, result) {
       if (err) throw err;
-      res.writeHead(200, {'Content-Type': 'text/JSON'});
+      res.writeHead(200, {'Content-Type': 'application/JSON'});
       res.write(JSON.stringify(result));
       res.end();
     });
   }
-}).listen('5000','127.0.0.1');
+}).listen('5000','localhost');
 var connection;
 prompt.start();
 console.log('\nEnter the number of the program you would like to run:\n' +

@@ -4,7 +4,13 @@
   "description": "software testing and continuous integration assignment 2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "bmi": "jest bmi.test.js",
+    "retirement": "jest retirement.test.js",
+    "email": "jest emailVerifier.test.js",
+    "tip": "jest splitTip.test.js",
+    "short": "jest shortestDistance.test.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +23,7 @@
   },
   "homepage": "https://github.com/hollis117/PPA2#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "core-js": "^3.3.4",
     "express": "^4.17.1",
@@ -24,10 +31,12 @@
     "jest": "^24.9.0",
     "jquery": "^3.4.1",
     "mysql": "^2.17.1",
-    "nock": "^11.6.0",
     "prompt": "^1.0.0",
     "react": "^16.11.0",
     "request": "^2.88.0",
     "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nock": "^11.6.0"
   }
 }
