@@ -8,6 +8,7 @@ function connect() {
     user: 'tester',
     password: 'tester',
     database: 'ppa2',
+    resultFormat: 'json',
     timezone: 'utc'
   });
   connection.connect((err) => {

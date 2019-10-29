@@ -5,11 +5,30 @@ const emailVerifier = require('./emailVerifier');
 const splitTip = require('./splitTip');
 const sql = require('./sql');
 const prompt = require('prompt');
+const http = require('http');
+const url = require('url');
 //const colors = require('colors/safe')
 
-
+connection = sql.connect();
 //Tried to put this in a while loop, but prompt didn't like that.
 //Wouldn't stop for input for some reason.
+var serv = http.createServer(function (req, res) {
+  if (req.url == '/bmi') {
+    connection.query('SELECT * FROM bmi', function (err, result) {
+      if (err) throw err;
+      res.writeHead(200, {'Content-Type': 'text/JSON'});
+      res.write(JSON.stringify(result));
+      res.end();
+    });
+  } else if (req.url == '/shortestDistance') {
+    connection.query('SELECT * FROM shortestDistance', function (err, result) {
+      if (err) throw err;
+      res.writeHead(200, {'Content-Type': 'text/JSON'});
+      res.write(JSON.stringify(result));
+      res.end();
+    });
+  }
+}).listen('5000','127.0.0.1');
 var connection;
 prompt.start();
 console.log('\nEnter the number of the program you would like to run:\n' +
@@ -28,7 +47,6 @@ prompt.get('choice', (err,res) => {
     //break;
 
     case 1:
-    connection = sql.connect();
     connection.query('SELECT * FROM bmi', function (err, result) {
       if (err) throw err;
       console.log('\nPrevious entries: \n');
@@ -40,7 +58,6 @@ prompt.get('choice', (err,res) => {
         console.log(bmi(parseInt(res.feet,10), parseInt(res.inches,10), parseInt(res.weight,10)));
       });
     });
-    sql.disconnect(connection);
     break;
 
     case 2:
@@ -53,7 +70,6 @@ prompt.get('choice', (err,res) => {
     break;
 
     case 3:
-    connection = sql.connect();
     connection.query('SELECT * FROM shortestDistance', function (err,result) {
       if (err) throw err;
       console.log('\nPrevious entries: \n');
@@ -65,7 +81,6 @@ prompt.get('choice', (err,res) => {
         console.log(shortestDistance(parseFloat(res.x1), parseFloat(res.y1), parseFloat(res.x2), parseFloat(res.y2)));
       });
     });
-    sql.disconnect(connection);
     break;
 
     case 4:
@@ -89,4 +104,6 @@ prompt.get('choice', (err,res) => {
     default:
     console.log('\nOops, that doesn\'t look like valid input.\n');
   }
+  sql.disconnect(connection);
+  serv.close();
 });
