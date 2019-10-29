@@ -14,9 +14,9 @@ var connection;
 prompt.start();
 console.log('\nEnter the number of the program you would like to run:\n' +
             //'[0]  Exit\n' +
-            '[1]  Body Mass Index\n' +
+            '[1]  Body Mass Index (Now with Database access!)\n' +
             '[2]  Retirement\n' +
-            '[3]  Shortest Distance\n' +
+            '[3]  Shortest Distance (Now with Database access!)\n' +
             '[4]  Email Verifier\n' +
             '[5]  Split the Tip\n');
 prompt.get('choice', (err,res) => {
