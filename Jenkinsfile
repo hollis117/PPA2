@@ -29,11 +29,11 @@ pipeline {
         sh 'npm run bmi-html'
       }
     }*/
-    stage('Deploy') {
+    /*stage('Deploy') {
       steps {
         sh 'node index.js'
       }
-    }
+    }*/
   }
   environment {
     CI = 'true'
