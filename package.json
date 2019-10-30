@@ -4,7 +4,7 @@
   "description": "software testing and continuous integration assignment 2",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest bmi.test.js retirement.test.js emailVerifier.test.js shortestDistance.test.js splitTip.test.js",
     "coverage": "jest --coverage",
     "bmi": "jest bmi.test.js",
     "bmi-stub": "jest bmi.stub.test.js",
