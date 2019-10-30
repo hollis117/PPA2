@@ -23,12 +23,12 @@ pipeline {
         sh 'npm run short-stub'
       }
     }
-    stage('Test (Mocks)') {
+    /*stage('Test (Mocks)') {
       steps {
         sh 'npm run short-html'
         sh 'npm run bmi-html'
       }
-    }
+    }*/
     stage('Deploy') {
       steps {
         sh 'node index.js'
