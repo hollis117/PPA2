@@ -25,8 +25,8 @@ pipeline {
     }
     stage('Test (Mocks)') {
       steps {
-        sh 'npm run bmi-html'
         sh 'npm run short-html'
+        sh 'npm run bmi-html'
       }
     }
     stage('Deploy') {
