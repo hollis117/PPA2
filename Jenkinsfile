@@ -19,14 +19,14 @@ pipeline {
     }
     stage('Test (Stubs)') {
       steps {
-        sh '''npm run bmi-stub
-              npm run short-stub'''
+        sh 'npm run bmi-stub'
+        sh 'npm run short-stub'
       }
     }
     stage('Test (Mocks)') {
       steps {
-        sh '''npm run bmi-html
-              npm run short-html'''
+        sh 'npm run bmi-html'
+        sh 'npm run short-html'
       }
     }
     stage('Deploy') {
